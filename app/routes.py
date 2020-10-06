@@ -52,7 +52,7 @@ def index():
                     player = Player(alias=form.alias.data, alias_hash=generated_alias_hash, score=1, flags=players_flags)
                     db.session.add(player)
                     db.session.commit()
-                    msg = 'Stærkt, det var første flag! Fremover skal du bruge denne hash til at aflevere flag: {}'.format(generated_alias_hash)
+                    msg = 'Stærkt, det var første flag! Fremover skal du bruge denne hash til at aflevere flag under dit alias {}: {}'.format(form.alias.data, generated_alias_hash)
                     return render_template('msg.html', msg=msg)
         else:
             msg = 'Ugyldigt flag.'
