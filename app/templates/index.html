@@ -1,29 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="block">
-  <h1>Heimdal</h1>
-  <div class="jumbotron row">
-    <p>Vi løber. De løber. Min lillesøster – hun er kun 10 år – løber også. Måske det er på tide, at vi sænker farten en smule; der er alligevel ingen steder at løbe hen. Se jer omkring, mine venner, for skønhed findes i detaljen!</p>
+<div class="container">
+  <div class="block">
+    <h1 class="row">Heimdal</h1>
+    <div class="jumbotron row">
+      <p>Vi løber. De løber. Min lillesøster – hun er kun 9 år – løber også. Måske det er på tide, at vi sænker farten en smule; der er alligevel ingen steder at løbe hen. Se jer omkring, mine venner - få den fugtige skovbund helt ind under huden - for skønhed findes i detaljen!</p>
+    </div>
+  </div>
+  <div class="block">
+    <h1 class="row">board</h1>
+    <div class="jumbotron row {% if players %}centered{% endif %}">
+      {% if players %}
+      <ul class="leaderboard">
+        {% for player in players %}
+        <li><span class="player-alias">{{ player.alias }}</span><span class="player-score">{{ player.score }}</span></li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>Ingen flag er fundet.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="block">
+    <h1 class="row">base</h1>
+    <form action="" method="POST" class="row" novalidate>
+      {{ form.hidden_tag() }}
+      <p>
+        {{ form.hash(placeholder="flag") }}
+      </p>
+      <p>
+        {{ form.alias(placeholder="alias") }}
+      </p>
+      <p>
+        {{ form.alias_hash(placeholder="alias hash") }}
+      </p>
+      <p>{{ form.submit() }}</p>
+    </form>
+  </div>
+  <div class="block">
+    <h1 class="row">noter</h1>
+    <div class="jumbotron row">
+      <p><b>For at aflevere første flag</b> indtaster du flagets ID og et navn du vil kendes ved. Lad alias hash stå tom. Det alias du har valgt vil så blive låst, og der vil fremover kun kunne afleveres flag gennem det alias, med den hash der bliver
+        genereret for dig. Pas godt på den!</p>
+      <p><b>For at aflevere alle flag efter det første</b>, indtaster du flagets ID, et navn du vil kendes ved og den alias hash, som du fik da du afleverede første flag. </p>
+      <p><span class="danger">Del ikke løsningerne, før CTF'en er slut!</span> Det ødelægger udfordringen for alle.</p>
+      <p>Det er altid en god idé, at spørge efter hjælp, og det er altid cool at hjælpe dem der har sværere ved at finde flagene med et peg i den rigtige retning, links til eventuelle værktøjer, dokumentationer eller <i>måske bare en skulder at græde
+          ved</i>.</p>
+      <p>Det er nogle relativt nemme flag, de fleste af dem, så du vil ikke få brug for exploits, hjemmelavede scripts eller onde onde payloads. Vær sød ved min server når vi leger skattejagt.</p>
+      <p>Det er helt fint at arbejde i grupper, især hvis man er ny her bag kulisserne - så længe i spiller fair.</p>
+      <p>Nogle flag kan findes uden ekstra værktøjer, mens andre kræver reconaissance-værktøjer.</p>
+      <p>Nogle flag kræver et kendskab til kryptografi (eller andre metoder til at beskytte data).</p>
+      <p>Nogle flag kræver et kendskab til HTTP protokollen.</p>
+      <p>Nogle flag kræver et åbent øje, og en evne til at genkende mønstre.</p>
+      <p>Der er i alt X flag. Flagene giver alle ét point, uafhængigt af sværhedsgrad.</p>
+      <p>Du kan <i>ikke</i> brute-force et flag; hvert flag er en tilfældig MD5-hash.</p>
+    </div>
+  </div>
+
+  <div class="attribution block">
+    <p>dfg hackerudvalg</p>
+    <p>udviklet af acephalos</p>
+    <p>go' jagt</p>
+    <p><span class="caduceus">☤</span></p>
   </div>
 </div>
-<div class="block">
-  <h1>board</h1>
-  <div class="jumbotron row">
-    <p>Ingen flag er fundet.</p>
-  </div>
-</div>
-<div class="block">
-  <h1>base</h1>
-  <form action="" method="POST" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.alias(placeholder="alias") }}
-    </p>
-    <p>
-      {{ form.hash(placeholder="flag") }}
-    </p>
-    <p>{{ form.submit() }}</p>
-  </form>
+<div class="cover">
+  <h2>Heimdal CTF</h2>
 </div>
 {% endblock %}

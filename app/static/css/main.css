@@ -1,4 +1,11 @@
 /* utility & base */
+html, body, div.container-fluid {
+  background-color: #faf3dd;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
 html, body, p, a {
   font-family: 'Cutive Mono', monospace;
 }
@@ -19,10 +26,87 @@ body h1 {
 }
 body .jumbotron {
   border-radius: 0px;
+  background-color: transparent;
+  border: solid 1px #000;
 }
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+span.danger {
+  color: #9D0208;
+  font-weight: bold;
+}
+form input {
+  border-radius: 0px;
+  border: solid 1px #000;
+  background: transparent;
+  padding: 10px;
+}
+h2 {
+  font-family: 'Gravitas One', monospace;
+  color: #faf3dd;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+/* classes & specifics */
+.attribution {
+  margin: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.attribution p {
+  font-family: 'Special Elite', monospace;
+  text-align: center;
+}
+.cover {
+  background: url('../img/snif-snif.jpg') no-repeat center center fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  min-height: 50vh;
+  width: 99.4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.caduceus {
+  font-size: 5rem;
+}
+.msg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.jumbotron.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+ul.leaderboard {
+  list-style: none;
+  text-align: center;
+  padding-left: 0px;
+}
+ul.leaderboard li {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1.3rem;
+}
+ul.leaderboard li .player-score {
+  padding: 20px;
+}
+ul.leaderboard li:first-child::before {
+  content: '♛ ';
+  color: #9D0208;
+}
+ul.leaderboard li:not(:first-child)::before {
+  content: '> ';
 }
