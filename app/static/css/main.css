@@ -1,0 +1,28 @@
+/* utility & base */
+html, body, p, a {
+  font-family: 'Cutive Mono', monospace;
+}
+.jumbotron p::before {
+  content: '[heimdal@ctf ~]$ ';
+  color: grey;
+}
+body h1 {
+  font-family: 'Gravitas One', monospace;
+  text-transform: lowercase;
+  margin: 60px 0 60px 0;
+} body h1::before {
+  content: '>_ ';
+  font-weight: bold;
+}
+.typewritten {
+  font-family: 'Special Elite', cursive;
+}
+body .jumbotron {
+  border-radius: 0px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="block">
+  <h1>Heimdal</h1>
+  <div class="jumbotron row">
+    <p>Vi løber. De løber. Min lillesøster – hun er kun 10 år – løber også. Måske det er på tide, at vi sænker farten en smule; der er alligevel ingen steder at løbe hen. Se jer omkring, mine venner, for skønhed findes i detaljen!</p>
+  </div>
+</div>
+<div class="block">
+  <h1>board</h1>
+  <div class="jumbotron row">
+    <p>Ingen flag er fundet.</p>
+  </div>
+</div>
+<div class="block">
+  <h1>base</h1>
+  <form action="" method="POST" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.alias(placeholder="alias") }}
+    </p>
+    <p>
+      {{ form.hash(placeholder="flag") }}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+</div>
+{% endblock %}
