@@ -11,6 +11,8 @@ flags = ['589745c9f4bac232119c8778c969d527', '596e16190d9edc057a0ed4f3c32e312d',
 # 596e16190d9edc057a0ed4f3c32e312d
 # b41dc55ef1a4f1a5f750edcfa50eb709
 # 86fb0763c84dd58be4541837d5224acf
+# 21c267100d5fa4ebb3ff18ec71eda507
+# 52b7501e767e0f39c65d2a8188b65ed2
 
 @app.route('/robots.txt')
 def robots():
@@ -41,13 +43,17 @@ def index():
                 msg = 'Forkert alias hash.'
                 return render_template('msg.html', msg=msg)
             elif player is None:
-                generated_alias_hash = str(random.getrandbits(128))
-                players_flags = json.dumps([form.hash.data])
-                player = Player(alias=form.alias.data, alias_hash=generated_alias_hash, score=1, flags=players_flags)
-                db.session.add(player)
-                db.session.commit()
-                msg = 'Stærkt, det var første flag! Fremover skal du bruge denne hash til at aflevere flag: {}'.format(generated_alias_hash)
-                return render_template('msg.html', msg=msg)
+                if '<script>' in form.alias.data or 'alert(' in form.alias.data:
+                    msg = 'Du får et flag for forsøget! Aflever det nye flag under dig eget alias. 52b7501e767e0f39c65d2a8188b65ed2'
+                    return render_template('msg.html', msg=msg)
+                else:
+                    generated_alias_hash = str(random.getrandbits(128))
+                    players_flags = json.dumps([form.hash.data])
+                    player = Player(alias=form.alias.data, alias_hash=generated_alias_hash, score=1, flags=players_flags)
+                    db.session.add(player)
+                    db.session.commit()
+                    msg = 'Stærkt, det var første flag! Fremover skal du bruge denne hash til at aflevere flag: {}'.format(generated_alias_hash)
+                    return render_template('msg.html', msg=msg)
         else:
             msg = 'Ugyldigt flag.'
             return render_template('msg.html', msg=msg)
