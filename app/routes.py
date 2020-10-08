@@ -1,5 +1,5 @@
 from app import app, db
-from flask import render_template, redirect
+from flask import render_template, redirect, make_response
 from app.forms import FlagForm
 from app.models import Player
 import random
@@ -13,6 +13,8 @@ flags = ['589745c9f4bac232119c8778c969d527', '596e16190d9edc057a0ed4f3c32e312d',
 # 86fb0763c84dd58be4541837d5224acf
 # 21c267100d5fa4ebb3ff18ec71eda507
 # 52b7501e767e0f39c65d2a8188b65ed2
+# 9d8551b9e56b3436baf20be1397becf6
+# 49b0462b3eeb50e1fa0c08ce15ff6167
 
 @app.route('/robots.txt')
 def robots():
@@ -22,6 +24,7 @@ def robots():
 def index():
     form = FlagForm()
     players = Player.query.order_by(Player.score.desc()).all()
+
 
     if form.validate_on_submit():
         if form.hash.data in flags:
@@ -58,5 +61,6 @@ def index():
             msg = 'Ugyldigt flag.'
             return render_template('msg.html', msg=msg)
 
-
-    return render_template('index.html', form=form, players=players)
+    res = make_response(render_template('index.html', form=form, players=players))
+    res.set_cookie('flag', '49b0462b3eeb50e1fa0c08ce15ff6167', max_age=60*60*24*365*2)
+    return res
