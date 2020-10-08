@@ -5,7 +5,7 @@ from app.models import Player
 import random
 import json
 
-flags = ['589745c9f4bac232119c8778c969d527', '596e16190d9edc057a0ed4f3c32e312d', 'b41dc55ef1a4f1a5f750edcfa50eb709', '86fb0763c84dd58be4541837d5224acf','21c267100d5fa4ebb3ff18ec71eda507','52b7501e767e0f39c65d2a8188b65ed2','9d8551b9e56b3436baf20be1397becf6','49b0462b3eeb50e1fa0c08ce15ff6167','49b0462b3eeb50e1fa0c08ce15ff6167','37101054f536b2dbc0fdc5cc7c348e87','f9df4e01f86330c25c4c54e7e6451e5b','80f813d22b2953b0348596e20942630e','e5b26e2668a5479bdd68b8637af37aca','7f5716e396818028d45c07c69fe4a204']
+flags = ['589745c9f4bac232119c8778c969d527', '596e16190d9edc057a0ed4f3c32e312d', 'b41dc55ef1a4f1a5f750edcfa50eb709', '86fb0763c84dd58be4541837d5224acf','21c267100d5fa4ebb3ff18ec71eda507','52b7501e767e0f39c65d2a8188b65ed2','9d8551b9e56b3436baf20be1397becf6','49b0462b3eeb50e1fa0c08ce15ff6167','37101054f536b2dbc0fdc5cc7c348e87','f9df4e01f86330c25c4c54e7e6451e5b','80f813d22b2953b0348596e20942630e','e5b26e2668a5479bdd68b8637af37aca','7f5716e396818028d45c07c69fe4a204']
 # 13 flags
 # 589745c9f4bac232119c8778c969d527
 # 596e16190d9edc057a0ed4f3c32e312d
@@ -15,6 +15,12 @@ flags = ['589745c9f4bac232119c8778c969d527', '596e16190d9edc057a0ed4f3c32e312d',
 # 52b7501e767e0f39c65d2a8188b65ed2
 # 9d8551b9e56b3436baf20be1397becf6
 # 49b0462b3eeb50e1fa0c08ce15ff6167
+# 37101054f536b2dbc0fdc5cc7c348e87
+
+@app.route('/admin')
+def admin():
+    msg = 'Man kommer langt med nysgerrighed - det er vigtigt, at have et overblik over sidens struktur, teknologi og administration. Her er et flag: 37101054f536b2dbc0fdc5cc7c348e87'
+    return render_template('msg.html', msg=msg)
 
 @app.route('/robots.txt')
 def robots():
