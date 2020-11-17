@@ -1,5 +1,8 @@
 # Heimdal-CTF
 An extensible platform for collaborative CTF challenges of all sorts - although best suited for cybersecurity training.
+
+**Latest version hosted on [akhefale.com](https://akhefale.com)**
+
 # Installation
 > These instructions are written for Linux, and will work with most distributions, although the installation process may vary between systems
 1. Ensure `python 3` is installed
