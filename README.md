@@ -20,3 +20,5 @@ An extensible platform for collaborative CTF challenges of all sorts - although 
 If you've made changes to Heimdal that you'd like to have merged, feel free to open a new pull request!
 If you're looking for somewhere to start, check out the issues.
 If you're holding on to a good idea, but don't have the time or skill required to give it life, open up a new issue and we'll get to it.
+# Resources
+If you're looking to learn flask, [Miguel's flask tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) is the way to go.
